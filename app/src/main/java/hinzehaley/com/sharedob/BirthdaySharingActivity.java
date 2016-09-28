@@ -1,6 +1,8 @@
 package hinzehaley.com.sharedob;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -202,15 +204,43 @@ public class BirthdaySharingActivity extends AppCompatActivity implements NsdLis
     }
 
     /**
-     * Sends birthday and name over mBirthdayConnection
+     * Sends birthday and name over mBirthdayConnection. If birthday or name weren't provided,
+     * doesn't send and provides error message
      */
     public void shareBirthday(){
         EditText etBirthday = (EditText) findViewById(R.id.et_select_birth_date);
         String birthday = etBirthday.getText().toString();
         EditText etName = (EditText) findViewById(R.id.et_name);
         String name = etName.getText().toString();
+
+        if(birthday == null){
+            showErrorDialog();
+            return;
+        }else if (birthday.equals("")){
+            showErrorDialog();
+            return;
+        }else if(name == null){
+            showErrorDialog();
+            return;
+        }else if(name.equals("")){
+            showErrorDialog();
+            return;
+        }
+
         String birthdayInfoString = birthday + ":" + name;
         mBirthdayConnection.sendBirthday(birthdayInfoString);
+    }
+
+    /**
+     * Shows an AlertDialog prompting user to fill in fields
+     */
+    private void showErrorDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getResources().getString(R.string.must_fill_in_fields))
+                .setCancelable(false)
+                .setPositiveButton("OK", null);
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     /**

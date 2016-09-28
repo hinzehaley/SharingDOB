@@ -8,4 +8,5 @@
     <string name="someone_shared_birthday">Someone Shared Their Birthday!</string>
     <string name="you_shared_birthday">You shared your birthday: </string>
     <string name="no_birthdays_shared">No Birthdays Shared</string>
+    <string name="must_fill_in_fields">Please fill in all fields before sending.</string>
 </resources>
