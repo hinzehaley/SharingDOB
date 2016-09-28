@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ShareDOB</string>
+
+    <string name="send">Send</string>
+    <string name="name">Name: </string>
+    <string name="age">Age: </string>
+    <string name="birthday">Birthday: </string>
+    <string name="someone_shared_birthday">Someone Shared Their Birthday!</string>
+    <string name="you_shared_birthday">You shared your birthday: </string>
+    <string name="no_birthdays_shared">No Birthdays Shared</string>
+</resources>
